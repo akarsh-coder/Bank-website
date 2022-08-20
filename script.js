@@ -83,5 +83,14 @@ const type=mov>0?'deposit':'withdrawal';
   containerMovements.insertAdjacentHTML('afterbegin',html);
 });
 }
-displayMovements(account1.movements)
+displayMovements(account1.movements);
+
+//creating username
+const createUsernames=accs=>{
+  accs.forEach(function(acc){
+    acc.username=acc.owner.toLowerCase().split(' ').map(name=>name[0]).join('');
+    })
+  }
+createUsernames(accounts);
+
 
