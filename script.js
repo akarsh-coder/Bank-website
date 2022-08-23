@@ -85,7 +85,17 @@ const type=mov>0?'deposit':'withdrawal';
 }
 displayMovements(account1.movements);
 
-//creating username
+// todo Display Balance
+const calcDisplayBalance= function(movements){
+  const balance=movements.reduce((accu,mov)=>
+    accu+mov,0);
+    labelBalance.textContent=`${balance}₹`;
+  }
+ calcDisplayBalance(account1.movements); 
+
+
+
+// TODO creating username
 const createUsernames=accs=>{
   accs.forEach(function(acc){
     acc.username=acc.owner.toLowerCase().split(' ').map(name=>name[0]).join('');
