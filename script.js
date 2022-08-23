@@ -86,10 +86,11 @@ const type=mov>0?'deposit':'withdrawal';
 //displayMovements(account1.movements);
 
 //  Display Balance
-const calcDisplayBalance= function(movements){
-  const balance=movements.reduce((accu,mov)=>
+const calcDisplayBalance= function(acc){
+  const balance=acc.movements.reduce((accu,mov)=>
     accu+mov,0);
-    labelBalance.textContent=`${balance}₹`;
+    acc.balance=balance;
+    labelBalance.textContent=`${acc.balance}₹`;
   }
  //calcDisplayBalance(account1.movements); 
 
@@ -133,11 +134,37 @@ btnLogin.addEventListener('click',function(e){
   // Clear fields
   inputLoginUsername.value=inputLoginPin.value=''; 
   inputLoginPin.blur(); 
-  //Display movements
-  displayMovements(currentAccount.movements);
-  //Display Balance
-  calcDisplayBalance(currentAccount.movements);
-  //Display summary
-  calcDisplaySummary(currentAccount);
+  
+  updateUI(currentAccount)
   }
+});
+
+const updateUI= function(acc){
+  //Display movements
+  displayMovements(acc.movements);
+  //Display Balance
+  calcDisplayBalance(acc);
+  //Display summary
+  calcDisplaySummary(acc);
+}
+
+//transfer section
+btnTransfer.addEventListener('click',function(e){
+  e.preventDefault();
+   const amount = Number(inputTransferAmount.value);
+   const receiverAcc= accounts.find(acc=> acc.username===inputTransferTo.value);
+    //Clear fields after transfer
+   inputTransferAmount.value=inputTransferTo.value=''; 
+
+   //transfer condition
+if(amount>0 && receiverAcc && currentAccount?.username!== receiverAcc?.username && currentAccount.balance>=amount){
+  
+  //update the accounts
+  currentAccount.movements.push(-amount);
+  receiverAcc.movements.push(amount);
+
+
+  updateUI(currentAccount);
+}
+
 });
