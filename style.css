@@ -24,10 +24,6 @@ nav {
   align-items: center;
   padding: 2rem 2rem;
   border-radius: 10px;
-box-shadow: rgba(163, 177, 198, 0.5) 5px 5px 10px 0px, rgb(255, 255, 255) -5px -5px 10px 0px;
--webkit-box-shadow: rgba(163, 177, 198, 0.5) 5px 5px 10px 0px, rgb(255, 255, 255) -5px -5px 10px 0px;
-border-radius: 14px;
--webkit-border-radius: 14px;
 }
 
 .welcome {
@@ -70,9 +66,11 @@ border-radius: 14px;
 
 .login__btn {
   border: none;
-  background: none;
+  border-radius: 0.7rem;
   font-size: 2.2rem;
-  color: inherit;
+  width: 60px;
+  box-shadow: rgba(163, 177, 198, 0.5) 3px 3px 6px 0px , rgb(255, 255, 255) -3px -3px 6px 0px ;
+  border-radius: 14px;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -130,10 +128,10 @@ border-radius: 14px;
   grid-row: 2 / span 3;
   background-color: #fff;
   border-radius: 1rem;
-  overflow: scroll;
+  overflow: auto;
   background-color: rgb(224, 229, 236);
-box-shadow: rgba(163, 177, 198, 0.5) 5px 5px 10px 0px inset, rgb(255, 255, 255) -5px -5px 10px 0px inset;
-border-radius: 8px;
+  box-shadow: rgba(163, 177, 198, 0.5) 4px 4px 8px 0px inset, rgb(255, 255, 255) -4px -4px 8px 0px inset;
+  border-radius: 10px;
 }
 
 .movements__row {

@@ -66,9 +66,12 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 //Display Movements
-const displayMovements=function(movements){
+const displayMovements=function(movements,sort=false){
   containerMovements.innerHTML="";
-movements.forEach(function(mov,i){
+
+  const movs = sort ? movements.slice().sort((a,b)=>a-b):movements;
+
+movs.forEach(function(mov,i){
 
 const type=mov>0?'deposit':'withdrawal';
 
@@ -112,7 +115,7 @@ const calcDisplaySummary= function(acc) {
 //calcDisplaySummary(account1.movements)
 
 
-// TODO creating username
+// creating username
 const createUsernames=accs=>{
   accs.forEach(function(acc){
     acc.username=acc.owner.toLowerCase().split(' ').map(name=>name[0]).join('');
@@ -198,4 +201,12 @@ currentAccount.movements.push(amount);
 inputLoanAmount.value='';
 updateUI(currentAccount);
   }
+});
+
+//button sort
+let sorted=false;
+btnSort.addEventListener('click',function(e){
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted=!sorted;
 })
