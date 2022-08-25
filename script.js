@@ -104,7 +104,9 @@ const calcDisplaySummary= function(acc) {
   labelSumOut.textContent=`${Math.abs(out)}₹`;
 
   const interest= acc.movements.filter(mov=>mov>0).map(deposit=>(deposit*acc.interestRate)/100).reduce((acc,int)=>acc+int,0);
-  labelSumInterest.textContent=`${interest}₹`;
+
+ //interest with fixed decimal place 
+  labelSumInterest.textContent=`${interest.toFixed(2)}₹`;
 
 }
 //calcDisplaySummary(account1.movements)
@@ -124,6 +126,8 @@ let currentAccount;
 btnLogin.addEventListener('click',function(e){
   e.preventDefault(); // Prevents form from submitting
 
+
+//Curren Account display
   currentAccount = accounts.find(acc=> acc.username === inputLoginUsername.value);
 
   if(currentAccount?.pin === Number(inputLoginPin.value)){
@@ -182,4 +186,16 @@ btnClose.addEventListener('click',function(e){
   
   }
   inputCloseUsername.value=inputClosePin.value='';
+});
+
+//Request Loan
+btnLoan.addEventListener('click',function(e){
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+  if(amount>0 && currentAccount.movements.some(mov=>mov>=amount*0.1)){
+//add movement
+currentAccount.movements.push(amount);
+inputLoanAmount.value='';
+updateUI(currentAccount);
+  }
 })

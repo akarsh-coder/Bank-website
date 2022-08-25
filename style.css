@@ -13,7 +13,7 @@ html {
 body {
   font-family: 'Poppins', sans-serif;
   color: #444;
-  background-color: #f3f3f3;
+  background-color: rgb(224, 229, 236);
   height: 100vh;
   padding: 2rem;
 }
@@ -24,7 +24,10 @@ nav {
   align-items: center;
   padding: 2rem 2rem;
   border-radius: 10px;
-  box-shadow: -2px -1px 16px 2px rgba(175, 175, 175, 0.75);
+box-shadow: rgba(163, 177, 198, 0.5) 5px 5px 10px 0px, rgb(255, 255, 255) -5px -5px 10px 0px;
+-webkit-box-shadow: rgba(163, 177, 198, 0.5) 5px 5px 10px 0px, rgb(255, 255, 255) -5px -5px 10px 0px;
+border-radius: 14px;
+-webkit-border-radius: 14px;
 }
 
 .welcome {
@@ -38,6 +41,7 @@ nav {
 
 .login {
   display: flex;
+  
 }
 
 .login__input {
@@ -50,8 +54,9 @@ nav {
   border-radius: 10rem;
   margin-right: 1rem;
   color: inherit;
-  border: 1px solid #fff;
   transition: all 0.3s;
+  background-color: rgba(255, 255, 255, 0.4);
+  
 }
 
 .login__input:focus {
@@ -60,7 +65,7 @@ nav {
 }
 
 .login__input::placeholder {
-  color: #bbb;
+  color: rgb(99, 99, 99);
 }
 
 .login__btn {
@@ -101,6 +106,7 @@ nav {
   align-items: flex-end;
   justify-content: space-between;
   margin-bottom: 2rem;
+  
 }
 
 .balance__label {
@@ -125,6 +131,9 @@ nav {
   background-color: #fff;
   border-radius: 1rem;
   overflow: scroll;
+  background-color: rgb(224, 229, 236);
+box-shadow: rgba(163, 177, 198, 0.5) 5px 5px 10px 0px inset, rgb(255, 255, 255) -5px -5px 10px 0px inset;
+border-radius: 8px;
 }
 
 .movements__row {
@@ -211,15 +220,22 @@ nav {
 }
 
 .operation--transfer {
-  background-image: linear-gradient(to top left, #ffb003, #ffcb03);
+  /* background-image: linear-gradient(to top left, #ffb003, #ffcb03); */
+  box-shadow: rgba(163, 177, 198, 0.5) 5px 5px 10px 0px, rgb(255, 255, 255) -5px -5px 10px 0px;
+border-radius: 14px;
 }
 
 .operation--loan {
-  background-image: linear-gradient(to top left, #39b385, #9be15d);
+  /* background-image: linear-gradient(to top left, #39b385, #9be15d); */
+  box-shadow: rgba(163, 177, 198, 0.5) 5px 5px 10px 0px, rgb(255, 255, 255) -5px -5px 10px 0px;
+border-radius: 14px;
 }
 
 .operation--close {
-  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+  /* background-image: linear-gradient(to top left, #e52a5a, #ff585f); */
+  box-shadow: rgba(163, 177, 198, 0.5) 5px 5px 10px 0px, rgb(255, 255, 255) -5px -5px 10px 0px;
+  border-radius: 14px;
+
 }
 
 h2 {
@@ -272,7 +288,8 @@ h2 {
   border: none;
   border-radius: 0.7rem;
   font-size: 1.8rem;
-  background-color: #fff;
+  box-shadow: rgba(163, 177, 198, 0.5) 3px 3px 6px 0px , rgb(255, 255, 255) -3px -3px 6px 0px ;
+  border-radius: 14px;
   cursor: pointer;
   transition: all 0.3s;
 }
