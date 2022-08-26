@@ -94,7 +94,7 @@ nav {
   gap: 2rem;
 
   /* fade in/out animation */
-  opacity: 0;
+  opacity: 100;
   transition: all 1s;
 }
 
