@@ -99,12 +99,15 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+//standard currency
+const formatCur=function(value, locale){
+  return new Intl.NumberFormat(locale,
+    {
+      style:'currency',
+      currency:'INR'
+    }).format(value)
+}
 
-const currencies = new Map([
-	['USD', 'United States dollar'],
-	['EUR', 'Euro'],
-	['GBP', 'Pound sterling'],
-]);
 //Movement date
 
 const formatMovementDate=function(date){
@@ -134,14 +137,15 @@ const displayMovements = function(acc, sort = false) {
 		const type = mov > 0 ? 'deposit' : 'withdrawal';
 		const date = new Date(acc.movementsDates[i]);
 		const displayDate=formatMovementDate(date);
-
+    
+    const formattedMov = formatCur(mov.toFixed(2), 'en-IN');
 
 		const html = `<div class="movements__row">
   <div class="movements__type movements__type--${type}">
     ${i+1} ${type}
   </div>
   <div class="movements__date">${displayDate}</div>
-  <div class="movements__value">${mov}₹</div>
+  <div class="movements__value">${formattedMov}₹</div>
 </div>`;
 
 		containerMovements.insertAdjacentHTML('afterbegin', html);
@@ -154,7 +158,7 @@ const calcDisplayBalance = function(acc) {
 	const balance = acc.movements.reduce((accu, mov) =>
 		accu + mov, 0);
 	acc.balance = balance;
-	labelBalance.textContent = `${acc.balance}₹`;
+	labelBalance.textContent = formatCur(acc.balance.toFixed(2), 'en-IN');
 }
 //calcDisplayBalance(account1.movements); 
 
@@ -162,15 +166,15 @@ const calcDisplayBalance = function(acc) {
 
 const calcDisplaySummary = function(acc) {
 	const incomes = acc.movements.filter(mov => mov > 0).reduce((acc, mov) => acc + mov, 0);
-	labelSumIn.textContent = `${incomes}₹`;
+	labelSumIn.textContent = formatCur(incomes.toFixed(2), 'en-IN');;
 
 	const out = acc.movements.filter(mov => mov < 0).reduce((acc, mov) => acc + mov, 0);
-	labelSumOut.textContent = `${Math.abs(out)}₹`;
+	labelSumOut.textContent = formatCur(out.toFixed(2), 'en-IN');
 
 	const interest = acc.movements.filter(mov => mov > 0).map(deposit => (deposit * acc.interestRate) / 100).reduce((acc, int) => acc + int, 0);
 
 	//interest with fixed decimal place 
-	labelSumInterest.textContent = `${interest.toFixed(2)}₹`;
+	labelSumInterest.textContent = formatCur(interest.toFixed(2), 'en-IN');
 
 }
 //calcDisplaySummary(account1.movements)
@@ -184,13 +188,6 @@ const createUsernames = accs => {
 }
 createUsernames(accounts);
 console.log(accounts);
-
-
-
-
-//day/mon/year
-
-
 
 
 //Event Handlers
@@ -221,10 +218,7 @@ btnLogin.addEventListener('click', function(e) {
     }
     //option object has been used
     // Specify date and time format using options (i.e. full, long, medium, short)
-
-
     const locale= navigator.language;
-
 
     //language-sensitive date and time formatting.
     labelDate.textContent=new Intl.DateTimeFormat(locale,options).format(now);
