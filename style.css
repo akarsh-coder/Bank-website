@@ -94,7 +94,7 @@ nav {
   gap: 2rem;
 
   /* fade in/out animation */
-  opacity: 100;
+  opacity: 0;
   transition: all 1s;
 }
 
@@ -306,4 +306,8 @@ h2 {
 
 .timer {
   font-weight: 600;
+}
+
+head #shortcutsvg{
+  background-color: #ccc;
 }
