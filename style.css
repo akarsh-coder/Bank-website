@@ -14,7 +14,7 @@ body {
   font-family: 'Poppins', sans-serif;
   color: #444;
   background-color: rgb(224, 229, 236);
-  height: 100vh;
+  height: auto;
   padding: 2rem;
 }
 
@@ -37,7 +37,6 @@ nav {
 
 .login {
   display: flex;
-  
 }
 
 .login__input {
@@ -87,7 +86,7 @@ nav {
 .app {
   position: relative;
   max-width: 100rem;
-  margin: 4rem auto;
+  margin: 1rem auto;
   display: grid;
   grid-template-columns: 3fr 3fr;
   grid-template-rows: auto repeat(3, 15rem) auto;
@@ -128,12 +127,21 @@ nav {
   grid-row: 2 / span 3;
   background-color: #fff;
   border-radius: 1rem;
-  overflow: auto;
+  overflow-y: scroll;
+  overflow-x: scroll;
   background-color: rgb(224, 229, 236);
   box-shadow: rgba(163, 177, 198, 0.5) 4px 4px 8px 0px inset, rgb(255, 255, 255) -4px -4px 8px 0px inset;
   border-radius: 10px;
 }
-
+/* Hide scrollbar for Chrome, Safari and Opera */
+.movements::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.movements {
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+}
 .movements__row {
   padding: 2.25rem 4rem;
   display: flex;
@@ -311,3 +319,18 @@ h2 {
 head #shortcutsvg{
   background-color: #ccc;
 }
+/* @media only screen and (max-width: 550px) {
+  .grid-container {
+    grid-template-areas:
+      "logo"
+      "welcome"
+      "login"
+      "balanceLabel"
+      "balance"
+      "balancedate"
+      "operation"
+      "movements"
+      "summary"
+      "timer";
+  }
+} */
